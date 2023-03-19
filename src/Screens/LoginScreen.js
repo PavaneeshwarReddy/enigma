@@ -25,14 +25,14 @@ function LoginScreen() {
       setShow(false);
     }, 1500);
   }
-
+  
   function navigateToHome() {
     navigate("/homescreen");
   }
 
   return (
-    <div className=" h-screen font-mono">
-      <div className="flex flex-col z-20 w-1/2 max-w-xs top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
+    <div>
+      <div className="flex flex-col z-20 w-1/2 max-w-xs top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 absolute p-5 border-black border-2"  style={{background:"rgb(155,192,151)"}}>
         <div className="text-center font-bold">Login to noRaw</div>
         <input
           placeholder="username"
@@ -65,7 +65,7 @@ function LoginScreen() {
           </button>
         </div>
         <button
-          className="outline bg-black text-white mt-5 p-2"
+          className=" bg-black text-white mt-5 p-2"
           onClick={async () => {
             Authenticaton.loginUser(username, password).then((response) => {
               setPopUpMsg(response.msg);

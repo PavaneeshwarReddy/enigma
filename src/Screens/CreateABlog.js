@@ -53,14 +53,14 @@ function CreateABlog() {
   const [imageSrc, setImageSrc] = useState(null);
   const [title, setTitle] = useState("");
   const [smallSummary, setSmallSummary] = useState("");
-  const [postContext, setPostContext] = useState("");
+  const [postContent, setpostContent] = useState("");
   const [tags, setTags] = useState(null);
   const [show,setShow] = useState(false)
   const [message,setMessage] = useState("")
   const [error,setError] = useState(false)
   return (
-    <div className="flex flex-col justify-center items-center mt-5 w-full">
-      <div className="text-lg bg-fuchsia-300">Create a Boring Content</div>
+    <div className="flex flex-col justify-center items-center overflow-hidden mt-5 mr-5 ml-5 border-black border-2" style={{background:"rgb(253,226,196)"}}>
+      <div className="text-lg bg-fuchsia-300 mt-5">Create a Boring Content</div>
       <div className="mt-5">
         <div className="flex flex-col w-screen justify-center items-center">
           <div className="w-screen h-80 bg-gray-100 relative">
@@ -105,16 +105,17 @@ function CreateABlog() {
 
           <div className="w-10/12 md:w-1/2 mt-5">
             <ReactQuill
+            className="bg-white"
               theme="snow"
               defaultValue={
                 "Don't make them sleep, Erase this and start writing your post...."
               }
               modules={modules}
               formats={formats}
-              value={postContext}
+              value={postContent}
               onChange={(content, delta, source, editor) => {
-                setPostContext(content);
-                console.log(postContext);
+                setpostContent(content);
+                
               }}
             />
           </div>
@@ -143,7 +144,7 @@ function CreateABlog() {
             <button
               className="w-20 p-2 bg-green-400 text-center"
               onClick={ () =>{
-                Blogs.createPost(title, smallSummary, postContext, selectedFile)
+                Blogs.createPost(title, smallSummary, postContent, tags,selectedFile)
                 .then((response)=>{
                   if(response.error==true) {
                     showPopUp();

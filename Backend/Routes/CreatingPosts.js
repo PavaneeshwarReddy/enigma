@@ -25,16 +25,17 @@ postsRoute.post("/createblog", uploadMiddleWare.single("file"), (req, res) => {
   const { norawtoken } = req.cookies;
   jwt.verify(norawtoken, jwtSecretKey, {}, async (error, info) => {
     const { userId } = info;
-    const { title, smallSummary, postContext } = req.body;
-    console.log(title, smallSummary, postContext);
-
+    const { title, smallSummary, postContent,tags } = req.body;
+    
+    console.log(req.body)
+  
     const postCreated = await PostModel.create({
       title,
       smallSummary,
-      postContent: postContext,
+      postContent,
       userId,
       file: newPath,
-      tags: "",
+      tags
     });
     
     if (postCreated) {
@@ -46,5 +47,10 @@ postsRoute.post("/createblog", uploadMiddleWare.single("file"), (req, res) => {
     }
   });
 });
+
+postsRoute.get("/allposts",async (req,res)=>{
+    const allPosts =await PostModel.find();
+    return res.json(allPosts);
+})
 
 module.exports = postsRoute;

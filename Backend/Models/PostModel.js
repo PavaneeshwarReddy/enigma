@@ -10,7 +10,7 @@ const postModel =new mongoose.Schema({
         type:String,
         required:true
     },
-    postContext:{
+    postContent:{
         type:String,
         required:false
     },
@@ -26,6 +26,8 @@ const postModel =new mongoose.Schema({
         type:String,
         require:false
     }
+},{
+    timestamps:true
 })
 
 const PostModel = mongoose.model('posts',postModel)

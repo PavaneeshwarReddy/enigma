@@ -30,8 +30,8 @@ function Navbar() {
     });
   }
   return (
-    <div className="">
-      <div className="flex justify-between mt-5 ml-5 mr-5">
+    <div className="mr-5 ml-5 mt-5 border-black border-2"  style={{background:"rgb(253,226,196)"}}>
+      <div className="flex justify-between p-2 ml-5 mr-5">
         <Link to="/" className="font-bold text-3xl font-mono">
         Enigma
         </Link>

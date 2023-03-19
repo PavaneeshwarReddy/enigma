@@ -24,7 +24,7 @@ function RegisterScreen() {
   };
   return (
     <div className=" h-screen font-mono">
-      <div className="flex flex-col w-1/2 max-w-xs top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
+      <div className="flex flex-col w-1/2 max-w-xs top-1/2  border-black border-2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute p-5" style={{background:"rgb(155,192,151)"}}>
         <div className="text-center font-bold">Register to noRaw</div>
         <input
           placeholder="e-mail"
@@ -66,7 +66,7 @@ function RegisterScreen() {
           </button>
         </div>
         <button
-          className="outline bg-black text-white mt-5 p-2"
+          className=" bg-black text-white mt-5 p-2"
           onClick={async () => {
             const response = await Authenticaton.registerUser(
               username,
